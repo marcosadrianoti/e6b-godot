@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://yxnk1iwqjt81"]
+
+[ext_resource type="Script" path="res://scripts/Disk.gd" id="1_m08ln"]
+[ext_resource type="Texture2D" uid="uid://bnulju37hrxux" path="res://assets/e6b/compass.svg" id="2_5e6q5"]
+[ext_resource type="Texture2D" uid="uid://bmehvfjylk0v7" path="res://assets/e6b/true_index.svg" id="2_6rlr7"]
+[ext_resource type="Script" path="res://scenes/Area2D.gd" id="4_8c4gd"]
+[ext_resource type="Script" path="res://scenes/compass.gd" id="4_i6e4f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d1tsk"]
+radius = 297.204
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3rbu"]
+radius = 249.722
+
+[node name="Disk" type="Node2D"]
+position = Vector2(242, 472)
+script = ExtResource("1_m08ln")
+
+[node name="startPositionOnDisk" type="Marker2D" parent="."]
+
+[node name="trueIndex" type="Area2D" parent="."]
+collision_priority = 2.0
+script = ExtResource("4_8c4gd")
+
+[node name="Sprite2D" type="Sprite2D" parent="trueIndex"]
+texture = ExtResource("2_6rlr7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trueIndex"]
+shape = SubResource("CircleShape2D_d1tsk")
+
+[node name="compass" type="Area2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+z_index = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_i6e4f")
+
+[node name="Sprite2D" type="Sprite2D" parent="compass"]
+texture = ExtResource("2_5e6q5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="compass"]
+shape = SubResource("CircleShape2D_q3rbu")
+debug_color = Color(0.442007, 0.470881, 0.953844, 0.42)
+
+[connection signal="mouse_entered" from="compass" to="compass" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="compass" to="compass" method="_on_mouse_exited"]

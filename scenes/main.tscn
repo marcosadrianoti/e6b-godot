@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cniwgkdmhdqpn"]
+
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="1_1w23q"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_8nqoy"]
+[ext_resource type="PackedScene" uid="uid://s1686hgavek" path="res://scenes/ruler.tscn" id="4_l8b34"]
+[ext_resource type="PackedScene" uid="uid://yxnk1iwqjt81" path="res://scenes/disk.tscn" id="8_v3wda"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_8nqoy")
+
+[node name="Ruler" parent="." instance=ExtResource("4_l8b34")]
+
+[node name="Disk" parent="." instance=ExtResource("8_v3wda")]
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(250, 500)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(250, 500)
+zoom = Vector2(1.25, 1.25)
+script = ExtResource("1_1w23q")
