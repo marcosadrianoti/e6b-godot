@@ -43,5 +43,6 @@ texture = ExtResource("2_5e6q5")
 shape = SubResource("CircleShape2D_q3rbu")
 debug_color = Color(0.442007, 0.470881, 0.953844, 0.42)
 
+[connection signal="mouse_exited" from="trueIndex" to="trueIndex" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="compass" to="compass" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="compass" to="compass" method="_on_mouse_exited"]

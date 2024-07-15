@@ -11,6 +11,7 @@ script = ExtResource("1_8nqoy")
 [node name="Ruler" parent="." instance=ExtResource("4_l8b34")]
 
 [node name="Disk" parent="." instance=ExtResource("8_v3wda")]
+scale = Vector2(0.974, 0.974)
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(250, 500)
