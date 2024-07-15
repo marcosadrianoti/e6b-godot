@@ -31,6 +31,5 @@ func _input_event(viewport, event, shape_idx):
 func _process(delta):
 	pass
 
-
 func _on_mouse_exited():
 	dragging = false
