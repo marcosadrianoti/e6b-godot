@@ -14,6 +14,5 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	trueIndex.input_pickable = true
-
 func _process(delta):
 	pass

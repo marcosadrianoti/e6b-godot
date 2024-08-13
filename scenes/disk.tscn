@@ -1,13 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://yxnk1iwqjt81"]
+[gd_scene load_steps=7 format=3 uid="uid://yxnk1iwqjt81"]
 
 [ext_resource type="Script" path="res://scripts/Disk.gd" id="1_m08ln"]
 [ext_resource type="Texture2D" uid="uid://bnulju37hrxux" path="res://assets/e6b/compass.svg" id="2_5e6q5"]
-[ext_resource type="Texture2D" uid="uid://bmehvfjylk0v7" path="res://assets/e6b/true_index.svg" id="2_6rlr7"]
-[ext_resource type="Script" path="res://scripts/trueIndex.gd" id="2_x8va4"]
+[ext_resource type="Script" path="res://scripts/trueIndex.gd" id="4_lyn6i"]
 [ext_resource type="Script" path="res://scripts/compass.gd" id="4_u62lp"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_d1tsk"]
-radius = 297.204
+[ext_resource type="Texture2D" uid="uid://bmehvfjylk0v7" path="res://assets/e6b/true_index.svg" id="5_cvhvb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q3rbu"]
 radius = 249.722
@@ -17,16 +14,6 @@ position = Vector2(242, 472)
 script = ExtResource("1_m08ln")
 
 [node name="startPositionOnDisk" type="Marker2D" parent="."]
-
-[node name="trueIndex" type="Area2D" parent="."]
-collision_priority = 2.0
-script = ExtResource("2_x8va4")
-
-[node name="Sprite2D" type="Sprite2D" parent="trueIndex"]
-texture = ExtResource("2_6rlr7")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="trueIndex"]
-shape = SubResource("CircleShape2D_d1tsk")
 
 [node name="compass" type="Area2D" parent="."]
 light_mask = 2
@@ -43,6 +30,17 @@ texture = ExtResource("2_5e6q5")
 shape = SubResource("CircleShape2D_q3rbu")
 debug_color = Color(0.442007, 0.470881, 0.953844, 0.42)
 
-[connection signal="mouse_exited" from="trueIndex" to="trueIndex" method="_on_mouse_exited"]
+[node name="trueIndex" type="Area2D" parent="."]
+collision_priority = 2.0
+script = ExtResource("4_lyn6i")
+
+[node name="Sprite2D" type="Sprite2D" parent="trueIndex"]
+texture = ExtResource("5_cvhvb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="trueIndex"]
+polygon = PackedVector2Array(255, 150, 233, 181, 209, 208, 180, 234, 147, 256, 111, 274, 76, 285, 40, 293, 2, 295, -36, 293, -78, 285, -118, 271, -154, 252, -185, 230, -214, 204, -237, 176, -255, 149, -255, -149, -233, -181, -207, -210, -182, -232, -152, -253, -116, -272, -78, -285, -37, -293, 2, -296, 40, -293, 77, -285, 111, -274, 147, -257, 184, -231, 212, -205, 235, -179, 255, -149)
+
 [connection signal="mouse_entered" from="compass" to="compass" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="compass" to="compass" method="_on_mouse_exited"]
+[connection signal="clickedTrueIndex" from="trueIndex" to="trueIndex" method="_on_clicked_true_index"]
+[connection signal="mouse_exited" from="trueIndex" to="trueIndex" method="_on_mouse_exited"]
