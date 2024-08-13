@@ -5,7 +5,6 @@ var drag_start_position = Vector2()
 var start_position_trueIndex = Vector2()
 var start_position_compass = Vector2()
 signal clickedTrueIndex
-#@onready var compass = get_node("../compass")
 
 func _ready():
 	pass
@@ -19,19 +18,13 @@ func _input_event(viewport, event, shape_idx):
 			print("Clique detectado na trueIndex!")
 			emit_signal("clickedTrueIndex")
 			dragging = true
-			#print('drag', dragging)
 			drag_start_position = mouse_global_pos
 			start_position_trueIndex = position
-			#print('global_position', position)
-			#start_position_compass = compass.position
 		else:
 			dragging = false
-			#print('drag', dragging)
-			
 	elif event is InputEventMouseMotion and dragging:
 		var mouse_delta = mouse_global_pos - drag_start_position
 		position = start_position_trueIndex + Vector2(0, mouse_delta.y)
-		#compass.position = start_position_compass + Vector2(0, mouse_delta.y)
 
 func _process(delta):
 	pass
@@ -39,7 +32,6 @@ func _process(delta):
 func _on_mouse_exited():
 	dragging = false
 	print('saindo')
-
 
 func _on_clicked_true_index():
 	print('teste de sinal emitido pelo trueIndex')
